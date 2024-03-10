@@ -1,9 +1,13 @@
 var requestOptions = {
     method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
     redirect: 'follow'
   };
 
-  fetch('http://localhost:5000/getMyInfo', requestOptions)
+  
+  fetch('http://localhost:8010/api/get_info', requestOptions)
   .then(res => {
     if (!res.ok) {
       alert("HTTP error! status:" + res.status);
@@ -12,7 +16,7 @@ var requestOptions = {
   })
   .then(json => {
     document.getElementById("name").textContent = "Hola " + json.name + " " + json.lastname;
-    document.getElementById("author").textContent = "2023 - Hecho por " + json.author;
+    document.getElementById("author").textContent = "2024 - Hecho por " + json.author;
 	  document.getElementById("facebookLink").href = "https://www.facebook.com/" + json.socialMedia.facebookUser;
     document.getElementById("instagramUser").href = "https://www.instagram.com/" + json.socialMedia.instagramUser;
     document.getElementById("xUser").href = "https://www.x.com/" + json.socialMedia.xUser;

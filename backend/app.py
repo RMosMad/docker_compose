@@ -1,6 +1,8 @@
 from flask import Flask,jsonify
 from flask_cors import CORS
 
+import json
+
 app = Flask(__name__)
 CORS(app)
 
@@ -10,8 +12,8 @@ def root():
     return "Hello World from Flask"
 
 
-@app.route('/getMyInfo')
-def getMyInfo():
+@app.route('/api/get_info')
+def get_info():
     value = {
         "name": "Rafael",
         "lastname": "Mosquera",
@@ -27,7 +29,7 @@ def getMyInfo():
         "author": "Rafael Mosquera"
     }
 
-    return jsonify(value)
+    return json.dumps(value)
 
-if __name__ == '__main__':
-    app.run(port=5000)
+# if __name__ == '__main__':
+#     app.run()
